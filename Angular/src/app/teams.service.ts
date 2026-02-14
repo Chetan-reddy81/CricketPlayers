@@ -11,7 +11,7 @@ import { TeamDto } from './teams/TeamDto';
 })
 export class TeamsService {
 
-  baseUrl="http://localhost:8080"
+  baseUrl=""
   constructor(private http:HttpClient) { }
 
   addTeam(team:team):Observable<Object>{
