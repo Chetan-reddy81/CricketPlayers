@@ -19,8 +19,8 @@ pipeline{
   stage('frontend integrate') {
   steps {
     sh '''
-      mkdir -p Spring/src/main/resources/static
-      cp -r Angular/dist/cricket-project/* Spring/src/main/resources/static/
+      sudo mkdir -p Spring/src/main/resources/static
+      sudo cp -r Angular/dist/cricket-project/* Spring/src/main/resources/static/
     '''
   }
 }
