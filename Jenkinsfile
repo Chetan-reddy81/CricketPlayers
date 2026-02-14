@@ -16,18 +16,16 @@ pipeline{
         }
       }
     }
-stage('Frontend Integrate') {
-    steps {
+    stage('Frontend Integrate') {
+      steps {
         sh '''
-        mkdir -p Spring/src/main/resources/static
-        rm -rf Spring/src/main/resources/static/*
-        cp -r Angular/dist/cricket-project/* Spring/src/main/resources/static/
-        '''
+          rm -rf Spring/src/main/resources/static/*
+          mkdir -p Spring/src/main/resources/static
+          cp -r Angular/dist/cricket-project/* Spring/src/main/resources/static/
+          '''
+        }
     }
-}
-
-
-    stage('Build back end'){
+  stage('Build back end'){
       steps{
         dir('Spring'){
         sh 'mvn clean package -DskipTests'
