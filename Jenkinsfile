@@ -16,13 +16,16 @@ pipeline{
         }
       }
     }
-    stage('Frontend Integrate') {
-      steps {
-        sh '''
-           cp -r Angular/dist/cricket-project/* Spring/src/main/resources/static/
-          '''
-        }
-    }
+stage('Frontend Integrate') {
+  steps {
+    sh '''
+      rm -rf Spring/src/main/resources/static
+      mkdir -p Spring/src/main/resources/static
+      cp -r Angular/dist/cricket-project/* Spring/src/main/resources/static/
+    '''
+  }
+}
+
   stage('Build back end'){
       steps{
         dir('Spring'){
