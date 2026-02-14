@@ -47,12 +47,17 @@ public class SecurityConfig {
 	{
 		return http.cors().and().csrf().disable().
 		
+			//authorizeHttpRequests().requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN").and().
+			//authorizeHttpRequests().requestMatchers("/user/**").hasAuthority("ROLE_USER").and().
+				
+			//authorizeHttpRequests().requestMatchers("/common/**").hasAnyAuthority("ROLE_ADMIN","ROLE_USER").and().
+				//authorizeHttpRequests().requestMatchers("/any/**").permitAll().and().
+
 			authorizeHttpRequests().requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN").and().
 			authorizeHttpRequests().requestMatchers("/user/**").hasAuthority("ROLE_USER").and().
 				
 			authorizeHttpRequests().requestMatchers("/common/**").hasAnyAuthority("ROLE_ADMIN","ROLE_USER").and().
-				authorizeHttpRequests().requestMatchers("/any/**").permitAll().and().
-				
+				authorizeHttpRequests().requestMatchers("/","/**").permitAll().and().
 				 
 	          
 				sessionManagement()
