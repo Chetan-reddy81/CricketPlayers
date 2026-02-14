@@ -9,7 +9,7 @@ import { playerTeam } from './all-players/playerteam';
 })
 export class PlayerService {
 
-baseUrl="http://localhost:8080";
+baseUrl="";
   constructor(private http:HttpClient) { }
 
   addPlayer(id:number,player:player):Observable<object>{
