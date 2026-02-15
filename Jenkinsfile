@@ -45,6 +45,20 @@ stage('Frontend Integrate') {
         }
       }
     }
+    stage('Deploy Container') {
+    steps {
+        sh '''
+        docker stop cricket-container || true
+        docker rm cricket-container || true
+        docker run -d \
+        --name cricket-container \
+        --network cricket-network \
+        -p 9090:9090 \
+        cricket-backend:v1
+        '''
+    }
+}
+
 
   }
 }
