@@ -45,7 +45,7 @@ stage('Frontend Integrate') {
         }
       }
     }
-    stage('Deploy Container') {
+  stage('Deploy Container') {
     steps {
         sh '''
         docker stop cricket-container || true
@@ -53,11 +53,15 @@ stage('Frontend Integrate') {
         docker run -d \
         --name cricket-container \
         --network cricket-network \
-        -p 9090:9090 \
+        -p 9090:8080 \
+        -e DB_URL=jdbc:mysql://mysql-container:3306/cricketdb \
+        -e DB_USERNAME=cricketuser \
+        -e DB_PASSWORD=cricketpass \
         cricket-backend:v1
         '''
     }
 }
+
 
 
   }
