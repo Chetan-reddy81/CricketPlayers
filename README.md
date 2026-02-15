@@ -8,7 +8,7 @@ This project was developed as a personal project to strengthen full-stack develo
 
 🚀 Features
 
-Role-Based Authentication
+Role-Based Authentication.
 
 Implemented using JWT (JSON Web Token).
 
