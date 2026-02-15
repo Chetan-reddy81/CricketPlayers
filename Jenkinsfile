@@ -38,6 +38,13 @@ stage('Frontend Integrate') {
         archiveArtifacts artifacts: 'Spring/target/*.jar', fingerprint: true
     }
 }
+    stage('Build Docker Image'){
+      steps{
+        dir('Spring'){
+          sh 'docker build -t cricket-backend:v1  
+        }
+      }
+    }
 
   }
 }
