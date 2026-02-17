@@ -48,6 +48,7 @@ pipeline {
 
     stage('Deploy Containers') {
       steps {
+        dir('Spring'){
         sh '''
         docker network create cricket-network || true
 
@@ -77,6 +78,7 @@ pipeline {
           -e DB_PASSWORD=cricketpass \
           cricket-backend:v1
         '''
+      }
       }
     }
 
