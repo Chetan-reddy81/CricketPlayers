@@ -40,7 +40,9 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
+        dir('Spring'){
         sh 'docker build -t cricket-backend:v1 Spring/'
+      }
       }
     }
 
