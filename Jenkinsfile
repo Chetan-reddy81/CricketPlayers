@@ -42,7 +42,7 @@ pipeline {
       steps {
         dir('Spring'){
         sh '''
-        docker build -t cricket-backend:latest Spring/
+        docker build -t cricket-backend:latest .
         '''
       }}
     }
