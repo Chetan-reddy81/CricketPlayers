@@ -41,44 +41,18 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         dir('Spring'){
-        sh 'docker build -t cricket-backend:v1  .'
-      }
-      }
+        sh '''
+        docker build -t cricket-backend:latest Spring/
+        '''
+      }}
     }
 
-    stage('Deploy Containers') {
+    stage('Deploy Using Compose') {
       steps {
-        dir('Spring'){
         sh '''
-        docker network create cricket-network || true
-
-        docker stop mysql-container || true
-        docker rm mysql-container || true
-
-        docker stop cricket-container || true
-        docker rm cricket-container || true
-
-        docker run -d \
-          --name mysql-container \
-          --network cricket-network \
-          -e MYSQL_ROOT_PASSWORD=rootpass \
-          -e MYSQL_DATABASE=cricketdb \
-          -e MYSQL_USER=cricketuser \
-          -e MYSQL_PASSWORD=cricketpass \
-          mysql:8.0
-
-        sleep 20
-
-        docker run -d \
-          --name cricket-container \
-          --network cricket-network \
-          -p 9090:8080 \
-          -e DB_URL=jdbc:mysql://mysql-container:3306/cricketdb \
-          -e DB_USERNAME=cricketuser \
-          -e DB_PASSWORD=cricketpass \
-          cricket-backend:v1
+        docker compose down || true
+        docker compose up -d
         '''
-      }
       }
     }
 
