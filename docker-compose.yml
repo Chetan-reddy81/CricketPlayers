@@ -13,11 +13,9 @@ services:
       MYSQL_PASSWORD: cricketpass
     volumes:
       - mysql-data:/var/lib/mysql
-    networks:
-      - cricket-network
 
   backend:
-    image: cricket-backend:v1
+    image: cricket-backend:latest
     container_name: cricket-container
     restart: unless-stopped
     ports:
@@ -28,11 +26,6 @@ services:
       DB_PASSWORD: cricketpass
     depends_on:
       - mysql
-    networks:
-      - cricket-network
 
 volumes:
   mysql-data:
-
-networks:
-  cricket-network:
