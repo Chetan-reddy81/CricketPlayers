@@ -1,10 +1,15 @@
 pipeline{
  agent any
   stages{
-    stage('BUILD'){
+    stage('checkout'){
       steps{
         checkout SCM
       }
     }
+   stage('Build'){
+    steps{
+     echo 'build'
+    }
+   }
   }
 }
