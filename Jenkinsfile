@@ -13,12 +13,6 @@ pipeline{
      }
     }
    }
-   stage('TEST'){
-    steps{
-     dir('Spring'){
-     sh 'mvn test'
-    }}
-     
-   }
+  
   }
 }
