@@ -8,7 +8,12 @@ pipeline{
     }
    stage('Build'){
     steps{
-     echo 'build'
+     sh 'mvn clean package'
+    }
+   }
+   stage('TEST'){
+    steps{
+     sh 'mvn test'
     }
    }
   }
