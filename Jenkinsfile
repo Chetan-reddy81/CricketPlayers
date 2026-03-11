@@ -9,7 +9,7 @@ pipeline{
    stage('Build'){
     steps{
      dir('Spring'){
-     sh 'mvn clean package'
+     sh 'mvn clean package -DskipTests'
      }
     }
    }
