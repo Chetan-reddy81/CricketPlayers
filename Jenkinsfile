@@ -35,9 +35,11 @@ pipeline{
    stage('Containers'){
     steps{
      dir('Spring'){
+      sh 'docker rm -f cricket-backend'
       sh 'docker run -d -p 9090:8080 --name cricket-backend cricket-backend'
      }
      dir('Angular'){
+      sh 'docker rm -f cricket-frontend'
       sh 'docker run -d -p 80:80 --name cricket-frontend cricket-frontend'
      }
     }
