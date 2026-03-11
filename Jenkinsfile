@@ -21,6 +21,27 @@ pipeline{
      }
     }
    }
+   stage('Docker images'){
+    steps{
+     dir('Spring'){
+      sh 'docker build -t cricket-backend ./backend'
+     }
+     dir('Angular'){
+      sh 'docker build -t cricket-frontend ./frontend'
+     }
+    }
+   }
+
+   stage('Containers'){
+    steps{
+     dir('Spring'){
+      sh 'docker run -d -p 9090:8080 cricket-backend'
+     }
+     dir('Angular'){
+      sh 'docker run -d -p 80:80 cricket-frontend'
+     }
+    }
+   }
   
   }
   post {
