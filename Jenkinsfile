@@ -24,10 +24,10 @@ pipeline{
    stage('Docker images'){
     steps{
      dir('Spring'){
-      sh 'docker build -t cricket-backend ./backend'
+      sh 'docker build -t cricket-backend .'
      }
      dir('Angular'){
-      sh 'docker build -t cricket-frontend ./frontend'
+      sh 'docker build -t cricket-frontend .'
      }
     }
    }
@@ -35,10 +35,10 @@ pipeline{
    stage('Containers'){
     steps{
      dir('Spring'){
-      sh 'docker run -d -p 9090:8080 cricket-backend'
+      sh 'docker run -d -p 9090:8080 --name cricket-backend cricket-backend'
      }
      dir('Angular'){
-      sh 'docker run -d -p 80:80 cricket-frontend'
+      sh 'docker run -d -p 80:80 --name cricket-frontend cricket-frontend'
      }
     }
    }
