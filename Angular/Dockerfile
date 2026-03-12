@@ -7,5 +7,5 @@ RUN npm run build
 
 FROM nginx:alpine 
 COPY --from=BUILD /app/dist  /usr/share/nginx/html
-EXPOSE 90
+EXPOSE 80
 
