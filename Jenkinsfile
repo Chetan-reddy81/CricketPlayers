@@ -48,7 +48,7 @@ pipeline{
  steps{
     dir('Spring'){
   sh '''
-  ssh ubuntu@10.0.1.80 "
+  ssh -o StrictHostKeyChecking=no ubuntu@10.0.1.80 "
   docker rm -f cricket-backend || true
   docker run -d -p 9090:8080 --name cricket-backend cricket-backend
   "
@@ -56,7 +56,7 @@ pipeline{
     }
   dir('Angular'){
   sh '''
-  ssh ubuntu@10.0.1.80 "
+  ssh -o StrictHostKeyChecking=no ubuntu@10.0.1.80 "
   docker rm -f cricket-frontend || true
   docker run -d -p 80:80 --name cricket-frontend cricket-frontend
   "
