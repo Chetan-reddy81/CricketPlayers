@@ -107,7 +107,7 @@ pipeline{
  }
 }*/
   
-  }
+  
   post {
   success {
    archiveArtifacts artifacts: 'Spring/target/*.jar, Angular/dist/**'
