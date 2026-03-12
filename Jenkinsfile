@@ -32,7 +32,7 @@ pipeline{
     }
    }
 
-   stage('Containers'){
+  /* stage('Containers'){
     steps{
      dir('Spring'){
       sh 'docker rm -f cricket-backend'
@@ -43,7 +43,27 @@ pipeline{
       sh 'docker run -d -p 80:80 --name cricket-frontend cricket-frontend'
      }
     }
-   }
+   }*/
+   stage('Deploy Containers'){
+ steps{
+    dir('Spring'){
+  sh '''
+  ssh ubuntu@10.0.1.80 "
+  docker rm -f cricket-backend || true
+  docker run -d -p 9090:8080 --name cricket-backend cricket-backend
+  "
+  '''
+    }
+  dir('Angular'){
+  sh '''
+  ssh ubuntu@10.0.1.80 "
+  docker rm -f cricket-frontend || true
+  docker run -d -p 80:80 --name cricket-frontend cricket-frontend
+  "
+  '''
+  }
+ }
+}
   
   }
   post {
