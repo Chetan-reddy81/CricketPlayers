@@ -32,7 +32,7 @@ pipeline{
     }
    }
 
-  /* stage('Containers'){
+   stage('Containers'){
     steps{
      dir('Spring'){
       sh 'docker rm -f cricket-backend'
@@ -43,8 +43,8 @@ pipeline{
       sh 'docker run -d -p 80:80 --name cricket-frontend cricket-frontend'
      }
     }
-   }*/
-   stage('Deploy Containers'){
+   }
+  /* stage('Deploy Containers'){
  steps{
     dir('Spring'){
   sh '''
@@ -63,7 +63,7 @@ pipeline{
   '''
   }
  }
-}
+}*/
   
   }
   post {
