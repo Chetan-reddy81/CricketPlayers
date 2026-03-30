@@ -129,12 +129,12 @@ aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE_FRONTEND --
 
      
     } } } 
-  
+  }
   post {
   success {
    archiveArtifacts artifacts: 'Spring/target/*.jar, Angular/dist/**'
   }
   }
  
-}
+
 }
