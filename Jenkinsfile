@@ -122,18 +122,19 @@ pipeline{
      $class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials'
     ]])
     {
-     sh ''' 
-     aws ecs update-service \
-     --cluster $ECS_CLUSTER \
-     --service $ECS_SERVICE_BACKEND \
-     --force-new-deployment \
-     --region $AWS_REGION 
-     
-     aws ecs update-service \
-     --cluster $ECS_CLUSTER \
-     --service $ECS_SERVICE_FRONTEND \ 
-     --force-new-deployment \
-     --region $AWS_REGION ''' 
+     sh '''
+aws ecs update-service \
+--cluster $ECS_CLUSTER \
+--service $ECS_SERVICE_BACKEND \
+--force-new-deployment \
+--region $AWS_REGION
+
+aws ecs update-service \
+--cluster $ECS_CLUSTER \
+--service $ECS_SERVICE_FRONTEND \
+--force-new-deployment \
+--region $AWS_REGION
+'''
      
     } } } }
   
