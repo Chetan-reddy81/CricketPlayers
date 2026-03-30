@@ -137,3 +137,4 @@ aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE_FRONTEND --
   }
  
 }
+}
