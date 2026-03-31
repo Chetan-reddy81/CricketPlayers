@@ -6,9 +6,9 @@ pipeline{
   ECR_FRONTEND='707600960718.dkr.ecr.us-east-1.amazonaws.com/cricket-frontend'
   ECR_BACKEND='707600960718.dkr.ecr.us-east-1.amazonaws.com/cricket-backend'
 
-  ECS_CLUSTER = 'cricket-cluster' 
+/*  ECS_CLUSTER = 'cricket-cluster' 
   ECS_SERVICE_FRONTEND = 'cricket-frontend-service' 
-  ECS_SERVICE_BACKEND = 'cricket-backend-service'
+  ECS_SERVICE_BACKEND = 'cricket-backend-service'*/
  }
   stages{
     stage('checkout'){
@@ -110,7 +110,7 @@ pipeline{
   }
  }
 }*/
-  stage('Deploy to ECS') { 
+  /*stage('Deploy to ECS') { 
    // Tell ECS to redeploy using latest images from ECR
    // ECS pulls new image and replaces old container 
    // Zero downtime — ECS starts new before stopping old
@@ -128,7 +128,7 @@ aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE_FRONTEND --
 """
 
      
-    } } } 
+    } } } */
   }
   post {
   success {
