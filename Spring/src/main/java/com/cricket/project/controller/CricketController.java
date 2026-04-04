@@ -140,7 +140,7 @@ public class CricketController {
 	 }
 	 
 	 @GetMapping("/common/unAssignedPlayers")
-	 @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+	// @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	 List<Cricketer> getAll(){
 		 return crs.getUnAssignedPlayers();
 	 }
