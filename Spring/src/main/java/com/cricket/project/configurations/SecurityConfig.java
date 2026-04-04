@@ -66,7 +66,7 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-	}*//*
+	}*/
 	@Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
@@ -75,7 +75,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
             .anyRequest().permitAll()
             .and()
             .build();
-}*/@Bean
+}/*@Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
             .csrf().disable()
@@ -84,7 +84,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
                 .anyRequest().authenticated()
             )
             .build();
-}
+}*/
 
 	
 	@Bean 
