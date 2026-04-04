@@ -66,7 +66,7 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-	}*/
+	}*//*
 	@Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
@@ -74,6 +74,15 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
             .authorizeHttpRequests()
             .anyRequest().permitAll()
             .and()
+            .build();
+}*/@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http
+            .csrf().disable()
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/common/allTeams").permitAll()  // 👈 THIS
+                .anyRequest().authenticated()
+            )
             .build();
 }
 
