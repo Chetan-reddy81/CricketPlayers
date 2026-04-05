@@ -26,11 +26,11 @@ public class AdminController {
 	    	 as.adminLog(admin);
 	     }
 	     catch (UserNotFound e) {
-			 TODO: handle exception
+			// TODO: handle exception
 			 return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND); 
 		}
 	     catch (Exception e) {
-			 TODO: handle exception
+			 //TODO: handle exception
 	    	 return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE); 
 		}
 	     
