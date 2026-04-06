@@ -7,8 +7,8 @@ pipeline{
   ECR_BACKEND='707600960718.dkr.ecr.us-east-1.amazonaws.com/cricket-backend'
 
   ECS_CLUSTER = 'cricket-cluster' 
-  ECS_SERVICE_FRONTEND = 'cricket-frontend-task-service' 
-  ECS_SERVICE_BACKEND = 'cricket-backend-task-service'
+  ECS_SERVICE_FRONTEND = 'cricket-frontend-service' 
+  ECS_SERVICE_BACKEND = 'cricket-backend-service'
  }
   stages{
     stage('checkout'){
