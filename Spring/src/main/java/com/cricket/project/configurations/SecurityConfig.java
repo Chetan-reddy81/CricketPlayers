@@ -66,8 +66,24 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-	}*/
-	@Bean
+	}*/@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http
+        .csrf().disable()
+        .cors().and()
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/any/**").permitAll()
+            .requestMatchers("/common/unAssignedPlayers").permitAll()
+            .anyRequest().authenticated()
+        )
+        .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+        .authenticationProvider(authenticationProvider())
+        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+        .build();
+}
+	/*@Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
             .csrf().disable()
@@ -75,7 +91,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
             .anyRequest().permitAll()
             .and()
             .build();
-}/*@Bean
+}*//*@Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
             .csrf().disable()
